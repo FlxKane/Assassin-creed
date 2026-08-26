@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<meta name="description" content="《刺客信条》正传十四部的完整剧情与世界观详解，按发售顺序撰写。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#128481;</text></svg>">
+<title>刺客信条全系列剧情详解</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;900&display=swap">
+<style>
+/* ===================== TOKENS =====================
+   The cover belongs to no single volume. Its ground is a cool graphite —
+   deliberately none of the three volume grounds (indigo / varnish-brown /
+   plum) — and its one accent is the gold that every volume shares.
+   The era ramp is a second, functional colour set: it encodes time, not mood. */
+:root{
+  --ground:#101418; --raised:#161B21; --inset:#0B0E12; --well:#131920;
+  --rule:#28313A; --rule-soft:#1D242C;
+  --text:#E7E2D6; --dim:#8D949C; --faint:#7A818A;
+  --gold:#C9A24E; --gold-soft:#7E6631; --gold-ink:#D8B76B;
+  --live:#C9A24E;          /* 已完成 */
+  --pending:#5E666F;       /* 待撰写 */
+
+  /* sequential era ramp: ancient → modern */
+  --e1:#3F7A72; --e2:#6E8355; --e3:#9A8A45; --e4:#C09A4E; --e5:#D9BE86;
+
+  --serif-cjk:"Noto Serif SC",serif;
+  --sans-cjk:"Noto Sans SC",system-ui,"Microsoft YaHei",sans-serif;
+  --display:"Bodoni Moda","Noto Serif SC",Georgia,serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --ground:#E6E3DC; --raised:#F0EDE7; --inset:#D6D2C9; --well:#DEDAD2;
+    --rule:#BAB4AA; --rule-soft:#CBC6BC;
+    --text:#181C21; --dim:#575E66; --faint:#5F666E;
+    --gold:#7B5F16; --gold-soft:#B0A277; --gold-ink:#7B5F16;
+    --live:#7B5F16; --pending:#8A9098;
+    --e1:#2E6259; --e2:#556843; --e3:#7A6D2F; --e4:#8E6E24; --e5:#9A7C42;
+  }
+}
+:root[data-theme="light"]{
+  --ground:#E6E3DC; --raised:#F0EDE7; --inset:#D6D2C9; --well:#DEDAD2;
+  --rule:#BAB4AA; --rule-soft:#CBC6BC;
+  --text:#181C21; --dim:#575E66; --faint:#5F666E;
+  --gold:#7B5F16; --gold-soft:#B0A277; --gold-ink:#7B5F16;
+  --live:#7B5F16; --pending:#8A9098;
+  --e1:#2E6259; --e2:#556843; --e3:#7A6D2F; --e4:#8E6E24; --e5:#9A7C42;
+}
+:root[data-theme="dark"]{
+  --ground:#101418; --raised:#161B21; --inset:#0B0E12; --well:#131920;
+  --rule:#28313A; --rule-soft:#1D242C;
+  --text:#E7E2D6; --dim:#8D949C; --faint:#7A818A;
+  --gold:#C9A24E; --gold-soft:#7E6631; --gold-ink:#D8B76B;
+  --live:#C9A24E; --pending:#5E666F;
+  --e1:#3F7A72; --e2:#6E8355; --e3:#9A8A45; --e4:#C09A4E; --e5:#D9BE86;
+}
+
+/* ===================== BASE ===================== */
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} }
+body{
+  margin:0; background:var(--ground); color:var(--text);
+  font-family:var(--sans-cjk); font-size:1rem; line-height:1.75;
+  letter-spacing:.015em; -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+h1,h2,h3{margin:0; text-wrap:balance}
+p{margin:0}
+a{color:inherit; text-decoration:none}
+:focus-visible{outline:2px solid var(--gold); outline-offset:3px; border-radius:2px}
+.wrap{width:min(78rem,92vw); margin-inline:auto}
+
+/* ===================== MASTHEAD ===================== */
+.masthead{padding-block:clamp(3.5rem,10vw,7rem) clamp(2rem,5vw,3rem)}
+.eyebrow{font-family:var(--mono); font-size:.68rem; letter-spacing:.36em;
+  text-transform:uppercase; color:var(--gold); margin-bottom:1.6rem}
+.masthead h1{font-family:var(--serif-cjk); font-weight:900;
+  font-size:clamp(2.3rem,7.5vw,5.2rem); line-height:1.08; letter-spacing:.04em}
+.masthead .lat{display:block; font-family:var(--display); font-weight:400;
+  font-style:italic; font-size:clamp(1rem,2.6vw,1.7rem); letter-spacing:.02em;
+  color:var(--dim); margin-top:1.1rem}
+.blurb{margin-top:clamp(1.8rem,4vw,2.6rem); max-width:44rem; color:var(--dim);
+  font-size:1.02rem; line-height:1.9}
+.blurb strong{color:var(--text); font-weight:500}
+
+.counter{display:flex; flex-wrap:wrap; align-items:baseline; gap:.5rem 2.2rem;
+  margin-top:clamp(1.8rem,4vw,2.4rem); padding-top:1.3rem;
+  border-top:1px solid var(--rule); font-family:var(--mono); font-size:.72rem;
+  letter-spacing:.14em; color:var(--dim); text-transform:uppercase}
+.counter b{font-family:var(--display); font-size:1.5rem; font-weight:700;
+  color:var(--gold); letter-spacing:0; font-variant-numeric:tabular-nums}
+
+/* ===================== ERA MAP ===================== */
+.eramap{margin-top:clamp(2.5rem,6vw,4rem); padding:clamp(1.1rem,3vw,1.8rem);
+  background:var(--raised); border:1px solid var(--rule-soft)}
+.eramap-head{display:flex; flex-wrap:wrap; justify-content:space-between;
+  align-items:baseline; gap:.5rem 1.5rem; margin-bottom:1.1rem}
+.eramap-head h2{font-family:var(--serif-cjk); font-weight:700; font-size:1.06rem;
+  letter-spacing:.04em}
+.eramap-head .note{font-size:.82rem; color:var(--dim); max-width:34rem}
+.eramap .scroller{overflow-x:auto; overflow-y:hidden}
+.eramap svg{display:block; width:100%; min-width:44rem; height:auto}
+svg .ax{stroke:var(--rule); stroke-width:1}
+svg .stem{stroke:var(--rule); stroke-width:1}
+svg .stem-live{stroke:var(--gold-soft); stroke-width:1}
+svg .tick{font-family:"IBM Plex Mono",monospace; font-size:10px; fill:var(--faint);
+  letter-spacing:.08em}
+svg .vn{font-family:"IBM Plex Mono",monospace; font-size:10.5px; font-weight:500;
+  fill:var(--pending); letter-spacing:.04em}
+svg .vn-live{fill:var(--gold)}
+svg .cap{font-family:"Noto Sans SC",sans-serif; font-size:11px; fill:var(--dim)}
+
+/* ===================== INDEX ===================== */
+.index{margin-top:clamp(2.5rem,6vw,4rem)}
+.index-head{display:flex; flex-wrap:wrap; justify-content:space-between;
+  align-items:baseline; gap:.5rem 1.5rem; padding-bottom:.9rem;
+  border-bottom:2px solid var(--gold-soft)}
+.index-head h2{font-family:var(--serif-cjk); font-weight:700; font-size:1.06rem;
+  letter-spacing:.04em}
+.index-head .hint{font-family:var(--mono); font-size:.68rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--dim)}
+
+.row{display:grid; gap:.15rem 1.2rem; padding:1.15rem .9rem 1.15rem .2rem;
+  border-bottom:1px solid var(--rule-soft); position:relative;
+  grid-template-columns:2.6rem minmax(0,1fr);
+  grid-template-areas:"num body" ". meta";
+  transition:background .25s ease, padding-left .25s ease}
+@media (min-width:860px){
+  .row{grid-template-columns:3.2rem minmax(0,1fr) 8rem 12.5rem 5.5rem;
+       grid-template-areas:"num body who era status"; align-items:center;
+       gap:0 1.3rem}
+}
+.row .num{grid-area:num; font-family:var(--display); font-size:1.45rem;
+  font-weight:700; line-height:1; color:var(--pending);
+  font-variant-numeric:tabular-nums}
+.row .body{grid-area:body; min-width:0}
+.row .nm{font-family:var(--serif-cjk); font-weight:700; font-size:1.1rem;
+  line-height:1.45; letter-spacing:.02em; display:block}
+.row .sub{display:block; font-family:var(--display); font-style:italic;
+  font-size:.88rem; color:var(--dim); margin-top:.12rem}
+.row .who{grid-area:who; font-family:var(--serif-cjk); font-size:.92rem;
+  line-height:1.5; color:var(--text); min-width:0}
+/* One name per line. A middle dot would read as a single person's full name
+   (艾吉奥·奥迪托雷 is punctuated exactly that way), so two protagonists are
+   stacked instead of joined. */
+.row .who i{display:block; font-style:normal}
+.row .who i + i{margin-top:.1rem}
+/* Unwritten volumes leave this cell genuinely empty — it fills in as each
+   article is finished, so the column doubles as a progress indicator. */
+.row.soon .who{color:var(--dim)}
+
+/* Column labels. Selectors are .row.rowhead so they outrank .row .who /
+   .row .era / .row .status, which are (0,2,0) and would otherwise win. */
+.rowhead{padding-block:.55rem; border-bottom:1px solid var(--rule-soft)}
+.row.rowhead span{font-family:var(--mono); font-size:.62rem; font-weight:400;
+  letter-spacing:.2em; text-transform:uppercase; color:var(--faint);
+  line-height:1.6; display:block}
+.row.rowhead .num{font-size:.62rem}
+
+.row .era{grid-area:era; font-family:var(--mono); font-size:.74rem;
+  letter-spacing:.06em; color:var(--dim); font-variant-numeric:tabular-nums;
+  display:flex; align-items:center; gap:.55rem}
+.row .swatch{width:.55rem; height:.55rem; flex:none; border-radius:50%}
+.row .status{grid-area:status; font-family:var(--mono); font-size:.67rem;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--pending)}
+@media (max-width:859px){
+  .row{grid-template-areas:"num body" ". who" ". era" ". status"; gap:.3rem 1rem}
+  /* Rows with no protagonist yet drop the row entirely — otherwise the empty
+     grid track still consumes one row-gap. */
+  .row.soon{grid-template-areas:"num body" ". era" ". status"}
+  .row .status{margin-top:.15rem}
+  .rowhead{display:none}
+}
+
+/* live rows are links */
+a.row{cursor:pointer}
+a.row .num{color:var(--gold)}
+a.row .status{color:var(--live)}
+a.row::before{content:""; position:absolute; left:0; top:0; bottom:0; width:2px;
+  background:var(--gold); transform:scaleY(0); transform-origin:top;
+  transition:transform .3s ease}
+a.row:hover{background:var(--well); padding-left:1rem}
+a.row:hover::before{transform:scaleY(1)}
+a.row:hover .nm{color:var(--gold-ink)}
+a.row:focus-visible{background:var(--well)}
+a.row .arrow{display:inline-block; margin-left:.5rem; color:var(--gold);
+  transform:translateX(-.25rem); opacity:0; transition:opacity .25s ease, transform .25s ease}
+a.row:hover .arrow{opacity:1; transform:translateX(0)}
+/* Pending volumes are de-emphasised with explicit colours rather than a blanket
+   opacity — dimming the whole row dropped the light theme below 4.5:1. */
+.row.soon .nm{font-weight:400; color:var(--dim)}
+.row.soon .sub,.row.soon .era{color:var(--faint)}
+.row.soon .swatch{opacity:.55}
+@media (prefers-reduced-motion:reduce){
+  a.row, a.row::before, a.row .arrow{transition:none}
+}
+
+/* ===================== FOOT ===================== */
+footer{margin-top:clamp(3rem,7vw,5rem); padding-block:clamp(2rem,5vw,3rem);
+  border-top:1px solid var(--rule)}
+.foot-grid{display:grid; gap:1.6rem; grid-template-columns:1fr}
+@media (min-width:760px){ .foot-grid{grid-template-columns:1.4fr 1fr} }
+footer h3{font-family:var(--mono); font-size:.67rem; letter-spacing:.22em;
+  text-transform:uppercase; color:var(--gold); margin-bottom:.7rem}
+footer p{font-size:.86rem; line-height:1.85; color:var(--dim)}
+footer p + p{margin-top:.6rem}
+.legend{display:flex; flex-wrap:wrap; gap:.5rem 1.2rem; margin-top:.7rem}
+.legend span{display:flex; align-items:center; gap:.4rem;
+  font-family:var(--mono); font-size:.68rem; letter-spacing:.08em; color:var(--dim)}
+.legend i{width:.55rem; height:.55rem; border-radius:50%; display:block}
+
+</style>
+</head>
+<body>
+<header class="masthead wrap">
+  <p class="eyebrow">Assassin&rsquo;s Creed &middot; Plot &amp; Lore</p>
+  <h1>刺客信条<br>全系列剧情详解
+    <span class="lat">Fourteen games, twenty-three centuries, one argument.</span>
+  </h1>
+  <p class="blurb">逐部梳理《刺客信条》正传十四部的完整剧情与世界观设定。每一篇都从必要的前情与术语讲起，按游戏推进顺序梳理全部剧情，再解释核心概念、区分史实与虚构。<strong>没有玩过游戏也能读懂。</strong></p>
+  <div class="counter">
+    <span><b>04</b> 已完成</span>
+    <span><b>14</b> 正传总数</span>
+    <span><b>2300</b> 年跨度</span>
+    <span>按发售顺序撰写</span>
+  </div>
+</header>
+
+<section class="wrap eramap">
+  <div class="eramap-head">
+    <h2>两种顺序</h2>
+    <p class="note">十四部作品的<strong>发售顺序</strong>与<strong>故事年代</strong>完全不同。下轴按年代标出每一部的位置，编号则是发售顺序——可以看到第 10、11 部反而是全系列最古老的故事。</p>
+  </div>
+  <div class="scroller">
+  <svg viewBox="0 0 1000 190" role="img" aria-label="年代轴：十四部刺客信条正传按故事发生年代分布于公元前500年至公元1900年之间，编号为发售顺序">
+    <line class="ax" x1="60" y1="150" x2="960" y2="150"/>
+    <g>
+      <line class="ax" x1="60"  y1="150" x2="60"  y2="156"/><text class="tick" x="60"  y="172" text-anchor="middle">前500</text>
+      <line class="ax" x1="247" y1="150" x2="247" y2="156"/><text class="tick" x="247" y="172" text-anchor="middle">前1</text>
+      <line class="ax" x1="435" y1="150" x2="435" y2="156"/><text class="tick" x="435" y="172" text-anchor="middle">500</text>
+      <line class="ax" x1="622" y1="150" x2="622" y2="156"/><text class="tick" x="622" y="172" text-anchor="middle">1000</text>
+      <line class="ax" x1="810" y1="150" x2="810" y2="156"/><text class="tick" x="810" y="172" text-anchor="middle">1500</text>
+      <line class="ax" x1="960" y1="150" x2="960" y2="156"/><text class="tick" x="960" y="172" text-anchor="middle">1900</text>
+    </g>
+
+    <!-- 已完成：金色实心 -->
+    <g><line class="stem-live" x1="694" y1="150" x2="694" y2="118"/><circle cx="694" cy="114" r="4.5" fill="var(--e3)"/><text class="vn vn-live" x="694" y="102" text-anchor="middle">01</text></g>
+    <g><line class="stem-live" x1="801" y1="150" x2="801" y2="118"/><circle cx="801" cy="114" r="4.5" fill="var(--e4)"/><text class="vn vn-live" x="801" y="102" text-anchor="middle">02</text></g>
+    <g><line class="stem-live" x1="810" y1="150" x2="810" y2="92"/><circle cx="810" cy="88" r="4.5" fill="var(--e4)"/><text class="vn vn-live" x="810" y="76" text-anchor="middle">03</text></g>
+
+    <!-- 待撰写 -->
+    <g><line class="stem-live" x1="814" y1="150" x2="814" y2="66"/><circle cx="814" cy="62" r="4.5" fill="var(--e4)"/><text class="vn vn-live" x="814" y="50" text-anchor="middle">04</text></g>
+    <g><line class="stem" x1="905" y1="150" x2="905" y2="92"/><circle cx="905" cy="88" r="4" fill="var(--pending)"/><text class="vn" x="905" y="76" text-anchor="middle">05</text></g>
+    <g><line class="stem" x1="891" y1="150" x2="891" y2="118"/><circle cx="891" cy="114" r="4" fill="var(--pending)"/><text class="vn" x="891" y="102" text-anchor="middle">06</text></g>
+    <g><line class="stem" x1="903" y1="150" x2="903" y2="66"/><circle cx="903" cy="62" r="4" fill="var(--pending)"/><text class="vn" x="903" y="50" text-anchor="middle">07</text></g>
+    <g><line class="stem" x1="918" y1="150" x2="918" y2="118"/><circle cx="918" cy="114" r="4" fill="var(--pending)"/><text class="vn" x="925" y="102" text-anchor="middle">08</text></g>
+    <g><line class="stem" x1="948" y1="150" x2="948" y2="92"/><circle cx="948" cy="88" r="4" fill="var(--pending)"/><text class="vn" x="948" y="76" text-anchor="middle">09</text></g>
+    <g><line class="stem" x1="229" y1="150" x2="229" y2="118"/><circle cx="229" cy="114" r="4" fill="var(--e1)"/><text class="vn" x="229" y="102" text-anchor="middle">10</text></g>
+    <g><line class="stem" x1="86"  y1="150" x2="86"  y2="118"/><circle cx="86"  cy="114" r="4" fill="var(--e1)"/><text class="vn" x="86"  y="102" text-anchor="middle">11</text></g>
+    <g><line class="stem" x1="575" y1="150" x2="575" y2="92"/><circle cx="575" cy="88" r="4" fill="var(--e2)"/><text class="vn" x="575" y="76" text-anchor="middle">12</text></g>
+    <g><line class="stem" x1="570" y1="150" x2="570" y2="118"/><circle cx="570" cy="114" r="4" fill="var(--e2)"/><text class="vn" x="564" y="102" text-anchor="middle">13</text></g>
+    <g><line class="stem" x1="840" y1="150" x2="840" y2="118"/><circle cx="840" cy="114" r="4" fill="var(--e4)"/><text class="vn" x="840" y="102" text-anchor="middle">14</text></g>
+
+    <text class="cap" x="86"  y="140" text-anchor="middle">古希腊</text>
+    <text class="cap" x="229" y="140" text-anchor="middle">古埃及</text>
+    <text class="cap" x="572" y="140" text-anchor="middle">中世纪</text>
+    <text class="cap" x="880" y="140" text-anchor="middle">近世欧洲 &middot; 九部集中于此</text>
+  </svg>
+  </div>
+</section>
+
+<section class="wrap index">
+  <div class="index-head">
+    <h2>目录 &middot; 按发售顺序</h2>
+    <p class="hint">点击已完成条目即可阅读</p>
+  </div>
+
+  <div class="row rowhead" aria-hidden="true">
+    <span class="num"></span>
+    <span class="body">作品</span>
+    <span class="who">主角</span>
+    <span class="era">年代 &middot; 地区</span>
+    <span class="status">状态</span>
+  </div>
+
+  <a class="row" href="https://flxkane.github.io/Assassin-creed/Assassins%20Creed%201%20-%20Eagle%20of%20Masyaf.html">
+    <span class="num">01</span>
+    <span class="body"><span class="nm">刺客信条 &mdash; 马西亚夫之鹰<span class="arrow">&rarr;</span></span>
+      <span class="sub">Assassins Creed &mdash; Eagle of Masyaf</span></span>
+    <span class="who"><i>阿泰尔</i></span>
+    <span class="era"><i class="swatch" style="background:var(--e3)"></i>1191 &middot; 圣地</span>
+    <span class="status">已完成</span>
+  </a>
+
+  <a class="row" href="https://flxkane.github.io/Assassin-creed/Assassins%20Creed%202%20-%20Blood%20of%20the%20Auditore.html">
+    <span class="num">02</span>
+    <span class="body"><span class="nm">刺客信条 II &mdash; 奥迪托雷之血<span class="arrow">&rarr;</span></span>
+      <span class="sub">Assassins Creed 2 &mdash; Blood of the Auditore</span></span>
+    <span class="who"><i>艾吉奥</i></span>
+    <span class="era"><i class="swatch" style="background:var(--e4)"></i>1476&ndash;1499 &middot; 意大利</span>
+    <span class="status">已完成</span>
+  </a>
+
+  <a class="row" href="https://flxkane.github.io/Assassin-creed/Assassins%20Creed%20Brotherhood%20-%20The%20Eagles%20of%20Rome.html">
+    <span class="num">03</span>
+    <span class="body"><span class="nm">刺客信条：兄弟会 &mdash; 罗马群鹰<span class="arrow">&rarr;</span></span>
+      <span class="sub">Assassins Creed Brotherhood &mdash; The Eagles of Rome</span></span>
+    <span class="who"><i>艾吉奥</i></span>
+    <span class="era"><i class="swatch" style="background:var(--e4)"></i>1499&ndash;1507 &middot; 罗马</span>
+    <span class="status">已完成</span>
+  </a>
+
+  <a class="row" href="https://flxkane.github.io/Assassin-creed/Assassins%20Creed%20Revelations%20-%20The%20Keys%20to%20Masyaf.html">
+    <span class="num">04</span>
+    <span class="body"><span class="nm">刺客信条：启示录 &mdash; 马西亚夫的钥匙<span class="arrow">&rarr;</span></span>
+      <span class="sub">Assassins Creed Revelations &mdash; The Keys to Masyaf</span></span>
+    <span class="who"><i>艾吉奥</i><i>阿泰尔</i></span>
+    <span class="era"><i class="swatch" style="background:var(--e4)"></i>1511&ndash;1512 &middot; 君士坦丁堡</span>
+    <span class="status">已完成</span>
+  </a>
+
+  <div class="row soon"><span class="num">05</span>
+    <span class="body"><span class="nm">刺客信条 III</span><span class="sub">Assassins Creed III &middot; 2012</span></span>
+    <span class="era"><i class="swatch" style="background:var(--e5)"></i>1754&ndash;1783 &middot; 北美</span>
+    <span class="status">待撰写</span></div>
+
+  <div class="row soon"><span class="num">06</span>
+    <span class="body"><span class="nm">刺客信条 IV：黑旗</span><span class="sub">Assassins Creed IV Black Flag &middot; 2013</span></span>
+    <span class="era"><i class="swatch" style="background:var(--e5)"></i>1715&ndash;1722 &middot; 加勒比海</span>
+    <span class="status">待撰写</span></div>
+
+  <div class="row soon"><span class="num">07</span>
+    <span class="body"><span class="nm">刺客信条：叛变</span><span class="sub">Assassins Creed Rogue &middot; 2014</span></span>
+    <span class="era"><i class="swatch" style="background:var(--e5)"></i>1752&ndash;1776 &middot; 北大西洋</span>
+    <span class="status">待撰写</span></div>
+
+  <div class="row soon"><span class="num">08</span>
+    <span class="body"><span class="nm">刺客信条：大革命</span><span class="sub">Assassins Creed Unity &middot; 2014</span></span>
+    <span class="era"><i class="swatch" style="background:var(--e5)"></i>1789&ndash;1794 &middot; 巴黎</span>
+    <span class="status">待撰写</span></div>
+
+  <div class="row soon"><span class="num">09</span>
+    <span class="body"><span class="nm">刺客信条：枭雄</span><span class="sub">Assassins Creed Syndicate &middot; 2015</span></span>
+    <span class="era"><i class="swatch" style="background:var(--e5)"></i>1868 &middot; 伦敦</span>
+    <span class="status">待撰写</span></div>
+
+  <div class="row soon"><span class="num">10</span>
+    <span class="body"><span class="nm">刺客信条：起源</span><span class="sub">Assassins Creed Origins &middot; 2017</span></span>
+    <span class="era"><i class="swatch" style="background:var(--e1)"></i>前 49&ndash;前 43 &middot; 埃及</span>
+    <span class="status">待撰写</span></div>
+
+  <div class="row soon"><span class="num">11</span>
+    <span class="body"><span class="nm">刺客信条：奥德赛</span><span class="sub">Assassins Creed Odyssey &middot; 2018</span></span>
+    <span class="era"><i class="swatch" style="background:var(--e1)"></i>前 431&ndash;前 422 &middot; 古希腊</span>
+    <span class="status">待撰写</span></div>
+
+  <div class="row soon"><span class="num">12</span>
+    <span class="body"><span class="nm">刺客信条：英灵殿</span><span class="sub">Assassins Creed Valhalla &middot; 2020</span></span>
+    <span class="era"><i class="swatch" style="background:var(--e2)"></i>872&ndash;878 &middot; 英格兰</span>
+    <span class="status">待撰写</span></div>
+
+  <div class="row soon"><span class="num">13</span>
+    <span class="body"><span class="nm">刺客信条：幻景</span><span class="sub">Assassins Creed Mirage &middot; 2023</span></span>
+    <span class="era"><i class="swatch" style="background:var(--e2)"></i>861&ndash;870 &middot; 巴格达</span>
+    <span class="status">待撰写</span></div>
+
+  <div class="row soon"><span class="num">14</span>
+    <span class="body"><span class="nm">刺客信条：影</span><span class="sub">Assassins Creed Shadows &middot; 2025</span></span>
+    <span class="era"><i class="swatch" style="background:var(--e4)"></i>1579&ndash;1582 &middot; 日本</span>
+    <span class="status">待撰写</span></div>
+</section>
+
+<footer class="wrap">
+  <div class="foot-grid">
+    <div>
+      <h3>关于这套文章</h3>
+      <p>按<strong>发售顺序</strong>撰写，而非年代顺序——这个系列的世界观是层层揭开的，按发售顺序读才能保住每一次揭示的分量。</p>
+      <p>文中未使用任何游戏截图或官方美术素材；配图均取自维基共享资源中处于公有领域或以知识共享协议发布的真实历史图像，地图与结构图为原创绘制。角色对白为中文译述。</p>
+    </div>
+    <div>
+      <h3>年代色标</h3>
+      <div class="legend">
+        <span><i style="background:var(--e1)"></i>古典时代</span>
+        <span><i style="background:var(--e2)"></i>中世纪早期</span>
+        <span><i style="background:var(--e3)"></i>中世纪盛期</span>
+        <span><i style="background:var(--e4)"></i>近世</span>
+        <span><i style="background:var(--e5)"></i>近代</span>
+      </div>
+      <p style="margin-top:1.4rem">Assassin&rsquo;s Creed &amp; all related marks are trademarks of Ubisoft Entertainment.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
